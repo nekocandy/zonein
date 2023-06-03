@@ -1,6 +1,9 @@
 lockfileVersion: '6.0'
 
 dependencies:
+  '@hashgraph/sdk':
+    specifier: ^2.26.0
+    version: 2.26.0
   hashconnect:
     specifier: ^0.2.4
     version: 0.2.4
