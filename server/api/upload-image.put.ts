@@ -1,8 +1,8 @@
-import { AccountId, Client, FileCreateTransaction, Hbar, PrivateKey, PublicKey } from '@hashgraph/sdk'
+import { AccountId, Client, FileCreateTransaction, PrivateKey, PublicKey } from '@hashgraph/sdk'
 
 export default defineEventHandler(async (event) => {
   const body = await readBody(event)
-  const { image } = JSON.parse(body)
+  const { image } = body
 
   const config = useRuntimeConfig()
 
@@ -17,7 +17,6 @@ export default defineEventHandler(async (event) => {
     const fileCreateTransaction = new FileCreateTransaction()
       .setKeys([filePublicKey])
       .setContents(image)
-      .setMaxTransactionFee(new Hbar(2))
       .freezeWith(client)
 
     const signTx = await fileCreateTransaction.sign(fileKey)
