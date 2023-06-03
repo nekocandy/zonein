@@ -6,6 +6,11 @@ export default defineNuxtConfig({
     '@nuxtjs/google-fonts',
     'nuxt-icon',
   ],
+
+  css: [
+    'vue-toast-notification/dist/theme-sugar.css',
+  ],
+
   experimental: {
     watcher: 'chokidar',
   },
