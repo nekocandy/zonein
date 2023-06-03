@@ -57,7 +57,10 @@ async function uploadPost() {
   const { fileId, transactionId } = uploadedData
 
   $toast.success(`Created File with ID: ${fileId}`)
-  $toast.success(`Transaction ID: ${transactionId}`)
+  $toast.success(`Transaction ID: <a target="_blank" class="text-[#222c56] underline decoration-double  hover:" href="https://hashscan.io/testnet/transaction/${transactionId}">${transactionId}</a>`, {
+    duration: 10000,
+    pauseOnHover: true,
+  })
 
   const realmApp = useRealmApp()
 
