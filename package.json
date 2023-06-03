@@ -25,5 +25,8 @@
   },
   "volta": {
     "node": "18.16.0"
+  },
+  "dependencies": {
+    "realm-web": "^2.0.0"
   }
 }
