@@ -6,6 +6,7 @@ definePageMeta({
 const isFetchingFromDatabase = ref(true)
 const isLoading = ref(false)
 const hederaUserId = ref('')
+const name = ref('')
 
 async function fetchFromDatabase() {
   const { $toast } = useNuxtApp()
@@ -55,6 +56,7 @@ async function saveToDatabase() {
   }, {
     $set: {
       hederaUserId: hederaUserId.value,
+      name: name.value,
     },
   }, {
     upsert: true,
@@ -86,6 +88,7 @@ onMounted(() => {
       </h1>
 
       <div class="w-4/6 flex flex-col gap-4">
+        <input v-model="name" class="w-full bg-[#ededff] placeholder-text-[#AAAACE] focus:outline-none py-2 px-4 rounded-md" placeholder="Enter Your Name" type="text">
         <input v-model="hederaUserId" class="w-full bg-[#ededff] placeholder-text-[#AAAACE] focus:outline-none py-2 px-4 rounded-md" placeholder="Enter Hedera ID" type="text">
       </div>
 
