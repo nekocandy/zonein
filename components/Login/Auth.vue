@@ -15,7 +15,7 @@ async function loginUser() {
   try {
     await realmApp.logIn(Credentials.emailPassword(email.value, password.value))
     $toast.success('User logged in successfully!')
-    navigateTo('/home')
+    navigateTo('/auth/hedera-id')
   }
   catch (error: any) {
     $toast.error(`Error creating user - ${error.toString()}`)

@@ -18,7 +18,7 @@ export default defineEventHandler(async (event) => {
   try {
     await app.emailPasswordAuth.confirmUser({ token, tokenId })
 
-    return sendRedirect(event, '/home', 302)
+    return sendRedirect(event, '/auth/hedera-id', 302)
   }
   catch (error: any) {
     console.error('verify user', error)
