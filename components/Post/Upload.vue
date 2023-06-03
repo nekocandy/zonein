@@ -1,13 +1,31 @@
 <script setup lang="ts">
+const fileUploadElement = ref<HTMLInputElement>()
 const documentType = ref<'photo' | 'certificate'>('photo')
+const file = ref<File>()
+const base64Image = ref<string | null>()
 
 function toggleDocumentType() {
   documentType.value = documentType.value === 'photo' ? 'certificate' : 'photo'
 }
+
+function selectFileToUpload() {
+  fileUploadElement.value?.click()
+}
+
+function onFileChange(event: any) {
+  file.value = event.target.files[0]
+}
+
+watch(file, async (file) => {
+  if (file) {
+    const base64: string = await toBase64(file) as string
+    base64Image.value = base64
+  }
+})
 </script>
 
 <template>
-  <div class="h-full w-full">
+  <div class="h-full w-full flex flex-col gap-4">
     <div class="bg-[#222c56] rounded-xl flex flex-col gap-6 py-4 px-6 text-white">
       <!-- upload here text -->
       <div class="flex items-center justify-center gap-2">
@@ -45,12 +63,23 @@ function toggleDocumentType() {
 
       <!-- upload button -->
       <div class="w-full -mt-3">
-        <button class="px-4 border-white border text-md py-2 rounded-lg w-full bg-[#01071f] flex items-center justify-center gap-2 text-[#70799B]">
+        <input ref="fileUploadElement" accept="image/png, image/gif, image/jpeg" type="file" max="1" class="hidden" @change="onFileChange">
+        <button class="px-4 border-white border text-md py-2 rounded-lg w-full bg-[#01071f] flex items-center justify-center gap-2 text-[#70799B]" @click="selectFileToUpload">
           <Icon class="h-6 w-6" name="tabler:script-plus" />
           Upload
         </button>
       </div>
     </div>
+
+    <div v-if="base64Image" class="bg-[#222c56] rounded-xl flex flex-col gap-4 py-6 px-6 text-white">
+      <div>Preview: </div>
+      <img :src="base64Image" :alt="base64Image">
+    </div>
+
+    <button v-if="base64Image" class="bg-[#222c56] w-full py-4 text-white rounded-xl">
+      <Icon class="h-6 w-6" name="tabler:world-upload" />
+      Upload
+    </button>
   </div>
 </template>
 
