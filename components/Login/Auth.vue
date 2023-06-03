@@ -66,7 +66,7 @@ watch(isLogin, () => {
       </div>
 
       <div class="flex flex-col gap-4 items-center w-full  px-12">
-        <button class="max-w-3/6 transition-all duration-500 bg-white rounded-full font-bold text-lg py-2 px-2 text-[#2d3487] flex justify-between items-center gap-2" type="button pr-2" @click="handleButtonClick">
+        <button class="max-w-3/6 transition-all duration-500 bg-white rounded-full font-bold text-lg py-2 px-2 text-[#2d3487] flex justify-between items-center gap-2" @click="handleButtonClick">
           <div class="rounded-full bg-[#2d3487] p-2 flex items-center justify-center">
             <Icon v-if="isLoading" color="#D0D1FB" name="tabler:circle-dotted" class="animate-spin" />
             <Icon v-else color="#D0D1FB" name="tabler:brand-gravatar" />
