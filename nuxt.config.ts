@@ -11,8 +11,14 @@ export default defineNuxtConfig({
 
   googleFonts: {
     families: {
-      Inter: true,
-      Roboto: true,
+      Montserrat: {
+        wght: [
+          100, 200, 300, 400, 500, 600, 700, 800, 900,
+        ],
+        ital: [
+          100, 200, 300, 400, 500, 600, 700, 800, 900,
+        ],
+      },
     },
   },
 })

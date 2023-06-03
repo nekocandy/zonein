@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', 'Roboto', 'sans-serif'],
+        sans: ['Montserrat', 'mono'],
       },
     },
   },
