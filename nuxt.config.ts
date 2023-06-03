@@ -3,8 +3,16 @@ export default defineNuxtConfig({
   modules: [
     '@vueuse/nuxt',
     '@nuxtjs/tailwindcss',
+    '@nuxtjs/google-fonts',
   ],
   experimental: {
     watcher: 'chokidar',
+  },
+
+  googleFonts: {
+    families: {
+      Inter: true,
+      Roboto: true,
+    },
   },
 })
