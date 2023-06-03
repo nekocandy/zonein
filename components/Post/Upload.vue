@@ -78,7 +78,7 @@ watch(file, async (file) => {
 
     <button v-if="base64Image" class="bg-[#222c56] w-full py-4 text-white rounded-xl">
       <Icon class="h-6 w-6" name="tabler:world-upload" />
-      Upload
+      Upload & Post
     </button>
   </div>
 </template>
