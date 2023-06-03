@@ -54,8 +54,12 @@ const paths = [
 
       <div>
         <div class="flex items-center gap-6">
-          <NuxtLink v-for="path in paths" :key="path.path" :href="path.path">
-            <Icon class="h-8 w-8 text-white" :name="path.icon" />
+          <NuxtLink
+            v-for="path in paths" :key="path.path" :href="path.path" :class="{
+              'bg-[#d0d1fb] p-2 rounded-full': $route.path.startsWith(path.path),
+            }"
+          >
+            <Icon class="h-8 w-8 text-white" :name="path.icon" :class="{ 'text-[#222C56]': $route.path.startsWith(path.path) }" />
           </NuxtLink>
         </div>
       </div>
