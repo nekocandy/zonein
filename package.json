@@ -27,6 +27,7 @@
     "node": "18.16.0"
   },
   "dependencies": {
+    "@formkit/auto-animate": "1.0.0-beta.6",
     "@hashgraph/sdk": "^2.26.0",
     "hashconnect": "^0.2.4",
     "realm-web": "^2.0.0",
