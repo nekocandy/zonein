@@ -29,6 +29,7 @@
   "dependencies": {
     "@formkit/auto-animate": "1.0.0-beta.6",
     "@hashgraph/sdk": "^2.26.0",
+    "@paralleldrive/cuid2": "^2.2.0",
     "hashconnect": "^0.2.4",
     "realm-web": "^2.0.0",
     "vue-toast-notification": "^3.1.1"
