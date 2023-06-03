@@ -13,6 +13,7 @@
     "@antfu/eslint-config": "^0.39.4",
     "@commitlint/cli": "^17.6.5",
     "@commitlint/config-conventional": "^17.6.5",
+    "@nuxtjs/google-fonts": "^3.0.1",
     "@nuxtjs/tailwindcss": "^6.7.0",
     "@vueuse/nuxt": "^10.1.2",
     "eslint": "^8.41.0",
