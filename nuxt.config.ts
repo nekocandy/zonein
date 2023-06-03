@@ -22,4 +22,11 @@ export default defineNuxtConfig({
       },
     },
   },
+
+  runtimeConfig: {
+    realmAppId: process.env.REALM_APP_ID,
+    public: {
+      realmAppId: process.env.REALM_APP_ID,
+    },
+  },
 })
