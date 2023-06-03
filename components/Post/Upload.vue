@@ -25,7 +25,7 @@ watch(file, async (file) => {
 </script>
 
 <template>
-  <div class="h-full w-full flex flex-col gap-4">
+  <div v-auto-animate class="h-full w-full flex flex-col gap-4">
     <div class="bg-[#222c56] rounded-xl flex flex-col gap-6 py-4 px-6 text-white">
       <!-- upload here text -->
       <div class="flex items-center justify-center gap-2">
