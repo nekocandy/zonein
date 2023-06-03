@@ -1,0 +1,53 @@
+<script setup lang="ts">
+const email = ref('')
+const password = ref('')
+const isLogin = ref(true)
+const isLoading = ref(true)
+</script>
+
+<template>
+  <div class="flex items-center justify-center py-12">
+    <div class="max-w-xl w-full bg-[#7e81de] rounded-xl px-12 py-8 flex flex-col gap-6 items-center justify-center">
+      <h1 class="text-white text-2xl font-bold">
+        Welcome to ZoneIn
+      </h1>
+
+      <div class="w-4/6 flex flex-col gap-4">
+        <input v-model="email" class="w-full bg-[#ededff] placeholder-text-[#AAAACE] focus:outline-none py-2 px-4 rounded-md" placeholder="Enter email" type="text">
+
+        <input v-model="password" class="w-full bg-[#ededff] placeholder-text-[#AAAACE] focus:outline-none py-2 px-4 rounded-md " placeholder="Enter password" type="password">
+      </div>
+
+      <div class="flex flex-col gap-4 items-center w-full ">
+        <button class="w-2/6 transition-all duration-500 bg-white rounded-full font-bold text-lg py-2 px-2 text-[#2d3487] flex justify-between items-center" type="button">
+          <div class="rounded-full bg-[#2d3487] p-2 flex items-center justify-center">
+            <Icon v-if="isLoading" color="#D0D1FB" name="tabler:circle-dotted" class="animate-spin" />
+            <Icon v-else color="#D0D1FB" name="tabler:brand-gravatar" />
+          </div>
+          <div>
+            <span v-if="isLogin">
+              Login
+            </span>
+            <span v-else>
+              Register
+            </span>
+          </div>
+
+          <div />
+        </button>
+
+        <div v-if="isLogin">
+          New User? <span class="text-white hover:underline cursor-pointer" @click="isLogin = false">Register!</span>
+        </div>
+
+        <div v-else>
+          Already User? <span class="text-white hover:underline cursor-pointer" @click="isLogin = true">Login!</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<style scoped>
+
+</style>
