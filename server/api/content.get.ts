@@ -18,17 +18,19 @@ export default defineEventHandler(async (event) => {
 
   const client = Client.forTestnet().setOperator(operatorId, operatorPrivateKey)
   try {
-    const fileContentQuery = await new FileContentsQuery()
+    const fileContentQuery = new FileContentsQuery()
       .setFileId(fileId)
-      .execute(client)
 
-    const fileContents = fileContentQuery.toString()
+    const fileContentQueryResponse = await fileContentQuery.execute(client)
+
+    const fileContents = fileContentQueryResponse.toString()
 
     return {
       fileContents,
     }
   }
   catch (error: any) {
+    console.error(error.message)
     if (error.message.includes('INVALID_FILE_ID')) {
       throw createError({
         statusCode: 404,
