@@ -18,7 +18,7 @@ const isLoading = ref(true)
         <input v-model="password" class="w-full bg-[#ededff] placeholder-text-[#AAAACE] focus:outline-none py-2 px-4 rounded-md " placeholder="Enter password" type="password">
       </div>
 
-      <div class="flex flex-col gap-4 items-center w-full ">
+      <div class="flex flex-col gap-4 items-center w-full  px-12">
         <button class="w-2/6 transition-all duration-500 bg-white rounded-full font-bold text-lg py-2 px-2 text-[#2d3487] flex justify-between items-center" type="button">
           <div class="rounded-full bg-[#2d3487] p-2 flex items-center justify-center">
             <Icon v-if="isLoading" color="#D0D1FB" name="tabler:circle-dotted" class="animate-spin" />
