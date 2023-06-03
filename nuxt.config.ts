@@ -4,6 +4,7 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     '@nuxtjs/tailwindcss',
     '@nuxtjs/google-fonts',
+    'nuxt-icon',
   ],
   experimental: {
     watcher: 'chokidar',
