@@ -5,7 +5,7 @@
 <template>
   <div class="h-full w-full">
     <div class="h-full w-full grid grid-cols-12 gap-6">
-      <div class="col-span-3">
+      <div class="col-span-3 overflow-y-auto">
         <PostUpload />
       </div>
 
