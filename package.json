@@ -27,6 +27,7 @@
     "node": "18.16.0"
   },
   "dependencies": {
+    "hashconnect": "^0.2.4",
     "realm-web": "^2.0.0",
     "vue-toast-notification": "^3.1.1"
   }
