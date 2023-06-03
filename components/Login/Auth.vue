@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { Credentials } from 'realm-web'
 
-const { $toast } = useNuxtApp()
 const email = ref('')
 const password = ref('')
 const isLogin = ref(true)
@@ -10,6 +9,8 @@ const isLoading = ref(false)
 const realmApp = useRealmApp()
 
 async function loginUser() {
+  const { $toast } = useNuxtApp()
+
   isLoading.value = true
   try {
     await realmApp.logIn(Credentials.emailPassword(email.value, password.value))
@@ -25,6 +26,8 @@ async function loginUser() {
 }
 
 async function createUser() {
+  const { $toast } = useNuxtApp()
+
   isLoading.value = true
   try {
     await realmApp.emailPasswordAuth.registerUser({ email: email.value, password: password.value })
