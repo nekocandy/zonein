@@ -15,6 +15,18 @@ export interface HederaPostWithTxnId extends HederaPost {
   timestamp: Date
 }
 
+export interface ChatMessage {
+  id: string
+  message: string
+  userId: string
+  fromMe: boolean
+}
+
+export interface ChatMessageWithTxnId extends ChatMessage {
+  transactionId: string
+  timestamp: Date
+}
+
 export interface ReportData {
   _id: BSON.ObjectId
   reportId: string
