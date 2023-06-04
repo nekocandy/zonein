@@ -26,7 +26,7 @@ export interface ReportData {
   upvotes: any[]
   downvotes: any[]
   comments: any[]
-  status: string
+  status: 'ongoing' | 'resolved'
   disclosure: boolean
   disclosureTxn: any
 }
