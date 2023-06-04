@@ -20,7 +20,7 @@ const { $router } = useNuxtApp()
 
     <!-- image -->
     <div class="flex flex-col gap-4">
-      <PostImage file-id="0.0.13752830" />
+      <PostImage :file-id="post.image" />
 
       <span class="text-xs text-white text-center">
         ( the image may look small, but hedera has limits on size )
