@@ -95,6 +95,10 @@ async function uploadPost() {
   })
 
   $toast.success('Post uploaded successfully')
+  file.value = undefined
+  base64Image.value = undefined
+  uploadClicked.value = false
+  caption.value = ''
 }
 
 watch(file, async (file) => {
