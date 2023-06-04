@@ -1,3 +1,3 @@
 export const HEDERA = {
-  POSTS_TOPIC: '0.0.13753411',
+  POSTS_TOPIC: '0.0.13753513',
 }
