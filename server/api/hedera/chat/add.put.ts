@@ -26,7 +26,11 @@ export default defineEventHandler(async (event) => {
       message: JSON.stringify(insertionData),
     }).execute(client)
 
-    return sendResponse.transactionId.toString()
+    return {
+      ...insertionData,
+      transactionId: sendResponse.transactionId.toString(),
+      timestamp: new Date(),
+    }
   }
   catch (error: any) {
     console.error(error)
