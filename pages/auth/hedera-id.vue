@@ -79,6 +79,9 @@ async function saveToDatabase() {
 
   const nftPackId = await createNFTAccount()
 
+  localStorage.setItem('hederaAccountId', hederaUserId.value)
+  localStorage.setItem('nftPackId', nftPackId!)
+
   await userCollection.findOneAndUpdate({
     userId: realmApp.currentUser.id,
   }, {
