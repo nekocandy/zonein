@@ -3,7 +3,7 @@ import { AccountId, Client, PrivateKey, TopicId, TopicMessageSubmitTransaction }
 import { HEDERA } from '~/utils/constants'
 
 export default defineEventHandler(async (event) => {
-  const insertionData = readBody(event)
+  const insertionData = await readBody(event)
 
   if (!insertionData) {
     throw createError({
