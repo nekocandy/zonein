@@ -1,16 +1,8 @@
 import { AccountId, Client, PrivateKey, TopicId, TopicMessageQuery } from '@hashgraph/sdk'
+import type { HederaPostWithTxnId } from '~/utils/types'
+import { HEDERA } from '~/utils/constants'
 
 export default defineEventHandler(async (event) => {
-  const query = getQuery(event)
-  const fileId = query.fileId as string
-
-  if (!fileId) {
-    throw createError({
-      statusCode: 400,
-      message: 'Missing token or tokenId',
-    })
-  }
-
   const config = useRuntimeConfig()
 
   const operatorId = AccountId.fromString(config.hedera.operator.accountId)
@@ -19,7 +11,7 @@ export default defineEventHandler(async (event) => {
 
   const client = Client.forTestnet().setOperator(operatorId, operatorPrivateKey)
 
-  const postsList: any[] = []
+  const postsList: HederaPostWithTxnId[] = []
 
   try {
     new TopicMessageQuery()
@@ -29,11 +21,10 @@ export default defineEventHandler(async (event) => {
         client,
         errorMessage => console.error('Error while fetching posts from topic: ', errorMessage),
         (message) => {
-        // console.log(Buffer.from(message.contents).toString("utf-8"));
-        // messagesList.push(Buffer.from(message.contents).toString("utf-8"));
+          // eslint-disable-next-line n/prefer-global/buffer
+          const jsonMessage = JSON.parse(Buffer.from(message.contents).toString('utf-8'))
           postsList.push({
-            // eslint-disable-next-line n/prefer-global/buffer
-            contents: Buffer.from(message.contents).toString('utf-8'),
+            ...jsonMessage,
             timestamp: message.consensusTimestamp.toDate(),
             transactionId: message.initialTransactionId
               ? message.initialTransactionId.toString()
