@@ -38,7 +38,9 @@ await fetchPosts()
         <div v-else class="h-full w-full space-y-4" />
       </div>
 
-      <div />
+      <div class="col-span-3">
+        <VulnerabilityAdd />
+      </div>
     </div>
   </div>
 </template>
