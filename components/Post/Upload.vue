@@ -67,7 +67,7 @@ async function uploadPost() {
   const postId = createId()
   const post = {
     id: postId,
-    caption: caption.value,
+    caption: caption.value.length > 0 ? caption.value : null,
     image: fileId,
     type: documentType.value,
     userId: realmApp.currentUser!.id,

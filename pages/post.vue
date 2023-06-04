@@ -1,5 +1,21 @@
 <script setup lang="ts">
+import type { HederaPostWithTxnId } from '~/utils/types'
 
+const posts = ref<HederaPostWithTxnId[]>([])
+const isPostsLoading = ref(true)
+
+async function fetchPosts() {
+  const response = await useFetch('/api/hedera/posts')
+
+  if (!response.data.value)
+    await response.refresh()
+
+  // @ts-expect-error serialized shit
+  posts.value = response.data.value!
+  isPostsLoading.value = false
+}
+
+await fetchPosts()
 </script>
 
 <template>
@@ -9,7 +25,9 @@
         <PostUpload />
       </div>
 
-      <div />
+      <div class="col-span-6 w-full h-full overflow-y-auto space-y-4">
+        <PostList :posts="posts" />
+      </div>
 
       <div />
     </div>
