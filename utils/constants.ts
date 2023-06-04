@@ -1,3 +1,4 @@
 export const HEDERA = {
   POSTS_TOPIC: '0.0.13753513',
+  CHAT_TOPIC: '0.0.13754007',
 }
