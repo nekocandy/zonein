@@ -8,9 +8,11 @@
       <div class="h-full w-full flex flex-col justify-end overflow-y-auto">
         <div class="relative max-w-7xl bg-[#4548af] mx-auto w-full rounded-t-lg pt-12 flex flex-col">
           <div class="absolute top-0 left-0 right-0 w-full flex justify-center -translate-y-1/2  px-12">
-            <div class="rounded-full h-24 w-24 bg-white text-center">
-              <span class="text-black">Logo</span>
-            </div>
+            <div
+              class="rounded-full h-24 w-24 bg-white text-center bg-center bg-cover" :style="{
+                backgroundImage: 'url(/favicon.png)',
+              }"
+            />
           </div>
 
           <slot />
