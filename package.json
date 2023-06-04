@@ -17,6 +17,7 @@
     "@nuxtjs/google-fonts": "^3.0.1",
     "@nuxtjs/tailwindcss": "^6.7.0",
     "@vueuse/nuxt": "^10.1.2",
+    "daisyui": "^3.0.2",
     "eslint": "^8.41.0",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.2",
