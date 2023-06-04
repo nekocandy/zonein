@@ -30,12 +30,15 @@ const { $router } = useNuxtApp()
     <div class="flex items-center gap-2">
       <Icon name="tabler:heart" class="h-8 w-8" color="#f63b3b" />
 
-      <div class="bg-white py-1 px-2 rounded-full">
+      <a target="_blank" :href="`https://hashscan.io/testnet/transaction/${post.transactionId}`" class="bg-white py-1 px-2 rounded-full">
         <Icon class="h-6 w-6" name="tabler:scan-eye" color="#E546D6" />
-      </div>
+      </a>
 
-      <div class="flex-1 w-full bg-[#01071f] rounded-xl">
-        <span>// no caption</span>
+      <div class="flex-1 w-full bg-[#01071f] rounded-xl py-2 px-4 text-white">
+        <span v-if="post.caption">
+          {{ post.caption }}
+        </span>
+        <span v-else class="text-zinc-500">// no caption</span>
       </div>
 
       <div>
