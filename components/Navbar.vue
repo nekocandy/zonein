@@ -63,7 +63,7 @@ const paths = [
               'bg-[#d0d1fb] p-2 rounded-full': $route.path.startsWith(path.path),
             }"
           >
-            <Icon class="h-8 w-8 text-white" :name="path.icon" :class="{ 'text-[#222C56]': $route.path.startsWith(path.path) }" />
+            <Icon class="h-8 w-8 text-white" :name="path.icon" :color="$route.path.startsWith(path.path) ? '#222c56' : ''" />
           </NuxtLink>
         </div>
       </div>
