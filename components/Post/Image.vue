@@ -30,7 +30,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <img :id="imageId" class="mx-auto" src="" alt="no, this doesn't load">
+  <img :id="imageId" class="mx-auto" src="" alt="Loading...">
 </template>
 
 <style scoped>
