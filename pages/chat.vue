@@ -1,8 +1,18 @@
 <script setup lang="ts">
 import type { ChatMessage, ChatMessageWithTxnId } from '~/utils/types'
 
+const messagesLoading = ref(true)
 const message = ref('')
 const messages = ref<ChatMessageWithTxnId[]>([])
+
+async function loadMessages() {
+  const { data } = await useFetch('/api/hedera/chat/get')
+  // @ts-expect-error some shit
+  messages.value = data.value
+  messagesLoading.value = false
+}
+
+loadMessages()
 
 async function submitMessage() {
   if (!message.value)
@@ -39,7 +49,11 @@ async function submitMessage() {
       <div class="col-span-3 overflow-y-auto" />
 
       <div class="col-span-6 w-full h-full bg-[#222c56] p-6 flex flex-col gap-4">
-        <div class="bg-white rounded-xl h-full py-2 overflow-y-auto">
+        <div v-if="messagesLoading" class="py-8 flex justify-center flex-1 items-center gap-2">
+          <Icon name="tabler:circle-dotted" class="animate-spin text-zinc-300 h-8 w-8" />
+          <span>Loading</span>
+        </div>
+        <div v-else class="bg-white rounded-xl h-full py-2 overflow-y-auto">
           <div
             v-for="msg in messages" :key="msg.id" class="chat" :class="{
               'chat-start': !msg.fromMe,
