@@ -8,6 +8,34 @@ const isLoading = ref(false)
 const hederaUserId = ref('')
 const name = ref('')
 
+async function createNFTAccount() {
+  const realmApp = useRealmApp()
+  const { $toast } = useNuxtApp()
+
+  if (!realmApp.currentUser) {
+    $toast.error('Please login first')
+    navigateTo('/login')
+    return
+  }
+
+  const { data } = await useFetch('/api/hedera/nft', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      userId: realmApp.currentUser.id,
+      name: name.value || 'SomeNameBecauseInitialDoesn\'tExist',
+    }),
+  })
+
+  $toast.success(`Created NFT pack for user! ID: <a target="_blank" class="text-[#222c56] underline hover:decoration-double  hover:" href="https://hashscan.io/testnet/token/${data.value?.tokenId}">${data.value?.tokenId}</a>`, {
+    duration: 10000,
+    pauseOnHover: true,
+  })
+  return data.value?.tokenId
+}
+
 async function fetchFromDatabase() {
   const { $toast } = useNuxtApp()
   const realmApp = useRealmApp()
@@ -24,10 +52,8 @@ async function fetchFromDatabase() {
     userId: realmApp.currentUser.id,
   })
 
-  if (!userData) {
+  if (!userData)
     isFetchingFromDatabase.value = false
-    return
-  }
 
   if (userData.hederaUserId)
     navigateTo('/home')
@@ -51,11 +77,14 @@ async function saveToDatabase() {
     return
   }
 
+  const nftPackId = await createNFTAccount()
+
   await userCollection.findOneAndUpdate({
     userId: realmApp.currentUser.id,
   }, {
     $set: {
       hederaUserId: hederaUserId.value,
+      nftPackId,
       name: name.value,
     },
   }, {
