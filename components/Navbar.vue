@@ -38,7 +38,11 @@ const paths = [
   <div class="bg-[#4548af] py-4">
     <div class="max-w-7xl mx-auto flex justify-between items-center">
       <div class="flex gap-4 items-center">
-        <div class="h-10 w-10 mr-2 bg-[#d0d1fb] rounded-full" />
+        <div
+          class="h-10 w-10 mr-2 bg-[#d0d1fb] rounded-full bg-center bg-cover" :style="{
+            backgroundImage: 'url(/favicon.png)',
+          }"
+        />
 
         <div>
           <Icon class="h-8 w-8 text-white" name="tabler:user-circle" />
