@@ -57,7 +57,7 @@ async function uploadPost() {
   const { fileId, transactionId } = uploadedData
 
   $toast.success(`Created File with ID: ${fileId}`)
-  $toast.success(`Transaction ID: <a target="_blank" class="text-[#222c56] underline decoration-double  hover:" href="https://hashscan.io/testnet/transaction/${transactionId}">${transactionId}</a>`, {
+  $toast.success(`Transaction ID: <a target="_blank" class="text-[#222c56] underline hover:decoration-double  hover:" href="https://hashscan.io/testnet/transaction/${transactionId}">${transactionId}</a>`, {
     duration: 10000,
     pauseOnHover: true,
   })
@@ -72,11 +72,27 @@ async function uploadPost() {
     type: documentType.value,
     userId: realmApp.currentUser!.id,
     createdAt: new Date(),
-    transactionId,
+    imageTransactionId: transactionId,
   }
 
+  const addPostToTopic = await useFetch('/api/hedera/post/add', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(post),
+  })
+
+  $toast.success(`Post added to Topic | ID: <a target="_blank" class="text-[#222c56] underline hover:decoration-double  hover:" href="https://hashscan.io/testnet/transaction/${addPostToTopic.data.value}">${addPostToTopic.data.value}</a>`, {
+    duration: 10000,
+    pauseOnHover: true,
+  })
+
   const postsCollection = useCollection('posts')
-  await postsCollection.insertOne(post)
+  await postsCollection.insertOne({
+    ...post,
+    transactionId: addPostToTopic.data.value,
+  })
 
   $toast.success('Post uploaded successfully')
 }
