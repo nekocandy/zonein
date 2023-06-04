@@ -56,7 +56,7 @@ async function fetchFromDatabase() {
     isFetchingFromDatabase.value = false
 
   if (userData.hederaUserId)
-    navigateTo('/home')
+    navigateTo('/post')
 }
 
 async function saveToDatabase() {
@@ -95,7 +95,7 @@ async function saveToDatabase() {
   })
 
   $toast.success('Hedera Account ID saved successfully')
-  navigateTo('/home')
+  navigateTo('/post')
 }
 
 onMounted(() => {
